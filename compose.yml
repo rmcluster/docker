@@ -1,0 +1,14 @@
+services:
+  rmcluster-frontend:
+    image: ghcr.io/rmcluster/frontend:main
+    network_mode: host
+
+  rmcluster-backend:
+    image: ghcr.io/rmcluster/server:main
+    command: [ "-gcasdb", "/var/rmd/gcas.db", "-storagedb", "/var/rmd/storagedb" ]
+    network_mode: host
+    volumes:
+      - backend-data:/var/rmd
+volumes:
+  backend-data:
+  frontend-data:
