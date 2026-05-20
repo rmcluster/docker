@@ -11,4 +11,3 @@ services:
       - backend-data:/var/rmd
 volumes:
   backend-data:
-  frontend-data:
