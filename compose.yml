@@ -6,7 +6,6 @@ services:
   rmcluster-backend:
     image: ghcr.io/rmcluster/server:${BACKEND_BRANCH}
     command: [ "-gcasdb", "/var/rmd/gcas.db", "-storagedb", "/var/rmd/storagedb" ]
-    network_mode: host
     ports:
       - "4917:4917" 
     volumes:
