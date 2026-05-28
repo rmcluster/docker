@@ -1,14 +1,18 @@
 services:
   rmcluster-frontend:
     image: ghcr.io/rmcluster/frontend:${FRONTEND_BRANCH}
+    environment:
+      BACKEND_URL: http://rmcluster-backend:4917
     ports:
       - "3000:3000"
+
   rmcluster-backend:
     image: ghcr.io/rmcluster/server:${BACKEND_BRANCH}
     command: [ "-gcasdb", "/var/rmd/gcas.db", "-storagedb", "/var/rmd/storagedb" ]
     ports:
-      - "4917:4917" 
+      - "4917:4917"
     volumes:
       - backend-data:/var/rmd
+
 volumes:
   backend-data:
