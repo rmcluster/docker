@@ -7,7 +7,7 @@ services:
       - "3000:3000"
 
   rmcluster-backend:
-    image: ghcr.io/rmcluster/server:${BACKEND_BRANCH}
+    image: ghcr.io/rmcluster/backend:${BACKEND_BRANCH}
     command: [ "-gcasdb", "/var/rmd/gcas.db", "-storagedb", "/var/rmd/storagedb" ]
     ports:
       - "4917:4917"
