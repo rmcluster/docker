@@ -4,11 +4,12 @@ This repository contains the docker compose file to run the full cluster (backen
 
 ## Quick start
 
-To deploy both frontend and backend, you can use the following command (replace `docker` with `podman` if you are using podman):
+To deploy both frontend and backend, you can use the following commands (replace `docker` with `podman` if you are using podman):
 
 ```sh
 git clone https://github.com/rmcluster/docker
 cd docker
+docker compose pull
 docker compose up -d
 ```
 
@@ -19,11 +20,14 @@ git clone https://github.com/rmcluster/docker
 cd docker
 
 # test backend
-BACKEND_BRANCH=feat-example docker compose up -d --pull always
+BACKEND_BRANCH=feat-example docker compose pull
+BACKEND_BRANCH=feat-example docker compose up -d
 
 # test frontend
-FRONTEND_BRANCH=feat-example docker compose up -d --pull always
+FRONTEND_BRANCH=feat-example docker compose pull
+FRONTEND_BRANCH=feat-example docker compose up -d
 
 # test both
-BACKEND_BRANCH=feat-example123 FRONTEND_BRANCH=feat-example456 docker compose up -d --pull always
+BACKEND_BRANCH=feat-example123 FRONTEND_BRANCH=feat-example456 docker compose pull
+BACKEND_BRANCH=feat-example123 FRONTEND_BRANCH=feat-example456 docker compose up -d
 ```
