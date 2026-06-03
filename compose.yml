@@ -13,6 +13,8 @@ services:
       - "4917:4917"
     volumes:
       - backend-data:/var/rmd
+      - model-cache:/root/.cache/huggingface
 
 volumes:
   backend-data:
+  model-cache:
