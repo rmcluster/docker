@@ -2,15 +2,16 @@ services:
   rmcluster-frontend:
     image: ghcr.io/rmcluster/frontend:${FRONTEND_BRANCH}
     environment:
-      BACKEND_URL: http://rmcluster-backend:4917
+      BACKEND_URL: http://host.docker.internal:4917
     ports:
       - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   rmcluster-backend:
     image: ghcr.io/rmcluster/backend:${BACKEND_BRANCH}
     command: [ "-gcasdb", "/var/rmd/gcas.db", "-storagedb", "/var/rmd/storagedb" ]
-    ports:
-      - "4917:4917"
+    network_mode: host
     volumes:
       - backend-data:/var/rmd
       - model-cache:/root/.cache/huggingface
